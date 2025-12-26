@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthTalent | Healthcare Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; scroll-behavior: smooth; }
+        .card-shadow { box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04); }
+        .modal-overlay { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); transition: all 0.3s ease; }
+        .hidden { display: none; }
+        .category-card:hover { transform: translateY(-5px); transition: all 0.3s ease; border-color: #3b82f6; }
+    </style>
+    
+</head>
+<body>
+
+    <div id="signInModal" class="fixed inset-0 z-[200] flex items-center justify-center modal-overlay hidden px-4">
+        <div class="bg-white w-full max-w-md rounded-[32px] p-10 relative shadow-2xl">
+            <button onclick="toggleModal()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-2xl">&times;</button>
+            <div class="text-center mb-8">
+                <div class="bg-blue-600 w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">H</div>
+                <h2 class="text-3xl font-bold text-[#05004e]">Welcome Back</h2>
+                <p class="text-gray-500 mt-2">Sign in to manage your appointments</p>
+            </div>
+            <form class="space-y-6" onsubmit="event.preventDefault(); alert('Sign in successful!')">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Mobile Number or Email</label>
+                    <input type="text" placeholder="e.g. +1 234 567 890 or mail@example.com" required
+                           class="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500 transition">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                    Continue
+                </button>
+            </form>
+            <p class="text-center text-gray-400 text-sm mt-8">
+                Don't have an account? <a href="#" class="text-blue-600 font-bold">Sign Up</a>
+            </p>
+        </div>
+    </div>
+    
+
+    <nav class="sticky top-0 z-[100] bg-white border-b border-gray-100 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold">H</div>
+                <span class="text-2xl font-bold text-[#05004e]">HealthTalent</span>
+            </div>
+            <div class="hidden md:flex gap-10 font-medium text-gray-600">
+                <a href="#Find Healthcare Professionals & Service" class="hover:text-blue-600 transition">Home</a>
+                <a href="#doctors" class="hover:text-blue-600 transition">Find Doctors</a>
+                <a href="#services" class="hover:text-blue-600 transition">Services</a>
+                <a href="#about" class="hover:text-blue-600 transition">About Us</a>
+            </div>
+            <div class="flex items-center gap-5">
+                <button onclick="toggleModal()" class="text-gray-600 font-semibold hover:text-blue-600 transition">Sign In</button>
+                <button class="bg-[#2563eb] text-white px-6 py-2.5 rounded-xl font-bold hover:bg-blue-700 shadow-md">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="w-full bg-[#eef2ff] py-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl font-bold text-[#1e3a8a] mb-4">Find Healthcare Professionals & Service</h1>
+            <p class="text-gray-500 mb-10 max-w-2xl mx-auto">Connect with qualified healthcare talent and discover medical services tailored to your needs.</p>
+            
+            <div class="bg-white p-6 rounded-[32px] shadow-xl max-w-4xl mx-auto border border-blue-50 mb-16">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="text" placeholder="🔍 Search by specialty, name..." class="flex-1 px-4 py-4 bg-gray-50 rounded-2xl outline-none">
+                    <input type="text" placeholder="📍 Location" class="flex-1 px-4 py-4 bg-gray-50 rounded-2xl outline-none">
+                    <button class="bg-black text-white px-10 py-4 rounded-2xl font-bold">Search</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div><div class="text-3xl font-bold text-blue-600">500+</div><div class="text-gray-500 text-xs uppercase font-semibold">Healthcare Professionals</div></div>
+                <div><div class="text-3xl font-bold text-blue-600">50+</div><div class="text-gray-500 text-xs uppercase font-semibold">Medical Specialties</div></div>
+                <div><div class="text-3xl font-bold text-blue-600">10k+</div><div class="text-gray-500 text-xs uppercase font-semibold">Patients Served</div></div>
+                <div><div class="text-3xl font-bold text-blue-600">4.8 ★</div><div class="text-gray-500 text-xs uppercase font-semibold">Average Rating</div></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="services" class="max-w-7xl mx-auto py-20 px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-[#05004e] mb-4">Browse by Service Category</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">Explore our comprehensive range of healthcare services and find the right professional for your needs.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="category-card bg-white p-8 rounded-[32px] border border-gray-100 card-shadow flex items-start gap-4 cursor-pointer">
+                <div class="bg-blue-50 p-4 rounded-2xl text-blue-600 text-2xl">🩺</div>
+                <div>
+                    <h4 class="text-xl font-bold text-[#05004e]">Primary Care</h4>
+                    <p class="text-gray-500 text-sm mt-2">General health checkups and preventive care</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xs text-gray-400 font-medium">89 professionals</span>
+                        <span class="text-blue-600">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card bg-white p-8 rounded-[32px] border border-gray-100 card-shadow flex items-start gap-4 cursor-pointer">
+                <div class="bg-blue-50 p-4 rounded-2xl text-blue-600 text-2xl">❤️</div>
+                <div>
+                    <h4 class="text-xl font-bold text-[#05004e]">Cardiology</h4>
+                    <p class="text-gray-500 text-sm mt-2">Heart health and cardiovascular care</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xs text-gray-400 font-medium">45 professionals</span>
+                        <span class="text-blue-600">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card bg-white p-8 rounded-[32px] border border-gray-100 card-shadow flex items-start gap-4 cursor-pointer">
+                <div class="bg-blue-50 p-4 rounded-2xl text-blue-600 text-2xl">📈</div>
+                <div>
+                    <h4 class="text-xl font-bold text-[#05004e]">Physical Therapy</h4>
+                    <p class="text-gray-500 text-sm mt-2">Rehabilitation and injury recovery</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xs text-gray-400 font-medium">67 professionals</span>
+                        <span class="text-blue-600">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card bg-white p-8 rounded-[32px] border border-gray-100 card-shadow flex items-start gap-4 cursor-pointer">
+                <div class="bg-blue-50 p-4 rounded-2xl text-blue-600 text-2xl">🧠</div>
+                <div>
+                    <h4 class="text-xl font-bold text-[#05004e]">Psychiatry</h4>
+                    <p class="text-gray-500 text-sm mt-2">Mental health and counseling services</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xs text-gray-400 font-medium">53 professionals</span>
+                        <span class="text-blue-600">→</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card bg-white p-8 rounded-[32px] border border-gray-100 card-shadow flex items-start gap-4 cursor-pointer">
+                <div class="bg-blue-50 p-4 rounded-2xl text-blue-600 text-2xl">🏠</div>
+                <div>
+                    <h4 class="text-xl font-bold text-[#05004e]">Specialized Care</h4>
+                    <p class="text-gray-500 text-sm mt-2">Expert care for specific conditions</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xs text-gray-400 font-medium">124 professionals</span>
+                        <span class="text-blue-600">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="doctors" class="max-w-7xl mx-auto py-16 px-6 flex flex-col lg:flex-row gap-12 border-t border-gray-100">
+        <aside class="w-full lg:w-1/4">
+            <div class="bg-white p-8 rounded-[32px] border border-gray-100 card-shadow sticky top-24">
+                <h3 class="text-xl font-bold mb-8 flex items-center gap-2">Filters <span class="text-lg">⚙️</span></h3>
+                <div class="space-y-6">
+                    <div>
+                        <p class="font-bold mb-4 text-sm">Specialty</p>
+                        <div class="space-y-2 text-sm text-gray-500">
+                            <label class="flex items-center gap-3"><input type="checkbox" checked class="w-4 h-4 rounded"> Cardiology</label>
+                            <label class="flex items-center gap-3"><input type="checkbox" class="w-4 h-4 rounded"> Pediatrics</label>
+                            <label class="flex items-center gap-3"><input type="checkbox" class="w-4 h-4 rounded"> Dermatology</label>
+                            <label class="flex items-center gap-3"><input type="checkbox" class="w-4 h-4 rounded"> Psychiatry</label>
+                            <label class="flex items-center gap-3"><input type="checkbox" class="w-4 h-4 rounded"> Nursing</label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-bold mb-2 text-sm">Minimum Rating: 0.0</p>
+                        <input type="range" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <button class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-lg shadow-blue-100 hover:bg-blue-700 transition">Apply Filters</button>
+                </div>
+            </div>
+        </aside>
+
+        <section class="w-full lg:w-3/4 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-[40px] border border-gray-100 overflow-hidden card-shadow p-2">
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800" class="w-full h-64 object-cover rounded-[32px]">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold">Dr. Emily Rodriguez</h3>
+                    <p class="text-blue-600 font-semibold text-sm">Cardiology | 📍 New York, NY</p>
+                    <div class="text-2xl font-bold my-4">$200-250/hr</div>
+                    <div class="flex gap-2 mb-6">
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">MRI</span>
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">X-Ray</span>
+                    </div>
+                    <button class="w-full bg-black text-white py-3.5 rounded-xl font-bold">View Profile</button>
+                </div>
+            </div>
+                    
+
+            <div class="bg-white rounded-[40px] border border-gray-100 overflow-hidden card-shadow p-2">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800" class="w-full h-64 object-cover rounded-[32px]">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold">Jennifer Martinez</h3>
+                    <p class="text-gray-400 text-sm mt-1 italic">🩺 Nursing | 📍 Chicago, IL</p>
+                    <div class="text-2xl font-bold my-4">$60-80/hr</div>
+                    <div class="flex gap-2 mb-6">
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Patient Care</span>
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Emergency</span>
+                    </div>
+                    <button class="w-full bg-black text-white py-3.5 rounded-xl font-bold">View Profile</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[40px] border border-gray-100 overflow-hidden card-shadow p-2">
+                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800" class="w-full h-64 object-cover rounded-[32px]">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold">Dr. Michael Chen</h3>
+                    <p class="text-blue-600 font-semibold text-sm">Pediatrics | 📍 Los Angeles, CA</p>
+                    <div class="text-2xl font-bold my-4">$200-250/hr</div>
+                    <div class="flex gap-2 mb-6">
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Patient Care</span>
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">X-Ray</span>
+                    </div>
+                    <button class="w-full bg-black text-white py-3.5 rounded-xl font-bold">View Profile</button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[40px] border border-gray-100 overflow-hidden card-shadow p-2">
+                <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=800" class="w-full h-64 object-cover rounded-[32px]">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold">Dr. Amanda Lewis</h3>
+                    <p class="text-gray-400 text-sm mt-1 italic">☢️ Radiology | 📍 Philadelphia, PA</p>
+                    <div class="text-2xl font-bold my-4">$200-250/hr</div>
+                    <div class="flex gap-2 mb-6">
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">MRI</span>
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">X-Ray</span>
+                    </div>
+                    <button class="w-full bg-black text-white py-3.5 rounded-xl font-bold">View Profile</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="about" class="bg-gray-100 py-24 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-[#05004e] mb-6">About HealthTalent</h2>
+            <p class="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed mb-16">
+                We're dedicated to connecting patients with the best healthcare professionals and services. Our platform makes it easy to find, compare, and book appointments with verified medical experts across all specialties.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-12 rounded-[40px] shadow-sm border border-gray-50 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 text-2xl">✔️</div>
+                    <h4 class="text-xl font-bold mb-4">Verified Professionals</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        All healthcare providers on our platform are thoroughly verified and credentialed.
+                    </p>
+                </div>
+                <div class="bg-white p-12 rounded-[40px] shadow-sm border border-gray-50 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 text-2xl">👨‍👩‍👧</div>
+                    <h4 class="text-xl font-bold mb-4">Patient-Centered</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        We prioritize your needs, making it simple to find the right care for you and your family.
+                    </p>
+                </div>
+                <div class="bg-white p-12 rounded-[40px] shadow-sm border border-gray-50 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 text-2xl">⚡</div>
+                    <h4 class="text-xl font-bold mb-4">Quality Care</h4>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Access to top-rated healthcare professionals committed to providing exceptional care.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#05004e] text-white py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1">
+                <h4 class="text-2xl font-bold mb-6">HealthTalent</h3>
+                <p class="text-gray-400 text-sm">Connecting patients with qualified professionals.</p>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold mb-6">For patients</h3>
+                <ul class="text-gray-400 text-sm space-y-4">
+                    <li><a href="#" class="hover:text-white transition">Browse services</a></li>
+                    <li><a href="#" class="hover:text-white transition">Find a Doctor</a></li>
+                    <li><a href="#" class="hover:text-white transition">Book Appointment</a></li>
+                    <li><a href="#" class="hover:text-white transition">Patient Resources </a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold mb-6">For Professionals </h3>
+                <ul class="text-gray-400 text-sm space-y-4">
+                    <li><a href="#" class="hover:text-white transition">Join Our Network</a></li>
+                    <li><a href="#" class="hover:text-white transition">Manage Profile</a></li>
+                    <li><a href="#" class="hover:text-white transition">Professional Benefits</a></li>
+                    <li><a href="#" class="hover:text-white transition">Resources</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold mb-6">Company</h3>
+                <ul class="text-gray-400 text-sm space-y-4">
+                    <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                    <li><a href="#" class="hover:text-white transition">Terms and Service</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-xs mt-16 pt-8 border-t border-gray-800">
+            © 2024 HealthTalent. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('signInModal');
+            modal.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

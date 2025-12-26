@@ -1,0 +1,168 @@
+/* HealthTalent - Custom Stylesheet */
+
+:root {
+    --primary-blue: #2563eb;
+    --dark-blue: #1e3a8a;
+    --text-gray: #6b7280;
+    --bg-light: #f9fafb;
+    --card-radius: 24px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-light);
+    color: #111827;
+}
+
+/* 1. Header & Navigation */
+nav {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* 2. Hero Section Search Box (Image 1 reference) */
+.search-container {
+    background: white;
+    border-radius: var(--card-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    padding: 32px;
+    max-width: 800px;
+    margin: -50px auto 40px;
+}
+
+/* 3. Filter Sidebar (Image 12 reference) */
+.filter-card {
+    background: white;
+    border-radius: var(--card-radius);
+    border: 1px solid #f3f4f6;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.filter-card h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #374151;
+    margin-bottom: 16px;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid #d1d5db;
+    cursor: pointer;
+}
+
+/* Range Slider Styling (Image 12) */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+}
+
+/* 4. Professional Cards (Image 3, 4 reference) */
+.prof-card {
+    background: white;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    border: 1px solid #f3f4f6;
+    transition: var(--transition);
+}
+
+.prof-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+
+.prof-image {
+    height: 260px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* 5. Rating Stars (Feature neenga kettathu) */
+.star-rating i {
+    font-size: 14px;
+    margin-right: 2px;
+}
+
+.star-rating .checked {
+    color: #fbbf24; /* Golden yellow */
+}
+
+/* 6. Tags/Specialties (Image 4 reference) */
+.tag {
+    background-color: #eff6ff;
+    color: #2563eb;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* 7. Buttons */
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: var(--dark-blue);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-view-profile {
+    background: #000;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* 8. Stats Section (Image 1 reference) */
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+.stats-label {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-container {
+        margin: 20px;
+        padding: 20px;
+    }
+}
